@@ -1,0 +1,26 @@
+.background {
+  z-index: 0;
+}
+
+.background img {
+  position: absolute;
+  z-index: 0;
+}
+
+/* Pontinhos */
+.background-dots {
+  top: 28px;
+  left: 71px;
+}
+
+/* Circulo Inferior */
+.background-circle01 {
+  left: 0;
+  top: 198px;
+}
+
+/* Circulo Superior */
+.background-circle02 {
+  top: 0;
+  right: 0;
+}
