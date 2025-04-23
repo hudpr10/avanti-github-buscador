@@ -1,6 +1,6 @@
 import "./style.css";
 
-const Perfil = ({image, name, description, status}) => {
+const Perfil = ({image, name, description, status, message}) => {
   return <div className="perfil-container">
     {status === 100 
     ? 
@@ -13,8 +13,8 @@ const Perfil = ({image, name, description, status}) => {
       </>
     :
       <p className="error">
-        Nenhum perfil foi encontrado com esse nome de usuário.
-        <br/>Tente novamente
+        {message !== "" ? message : <>Nenhum perfil foi encontrado com esse nome de usuário.<br/>Tente novamente</>}
+
       </p>
     }
   </div>

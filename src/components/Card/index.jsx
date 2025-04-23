@@ -9,15 +9,27 @@ const Card = () => {
   // Variáveis para manipução dos dados
   const [inputValue, setInputValue] = useState("");
   const [githubResponse, setGithubResponse] = useState({
-    name: "Lucas Mendes",
-    image: "/src/assets/imgs/example.png", 
-    description: "Desenvolvedor front-end apaixonado por criar interfaces intuitivas e acessíveis. Especialista em UX/UI e e-commerces, transformando design em código eficiente. Sempre explorando novas tecnologias para melhorar a experiência do usuário. 🚀", 
-    status: 100
+    name: "",
+    image: "", 
+    description: "", 
+    status: "",
+    message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
   // Função para capturar o click do usuário
   const handleClick = () => {
+    updateComponentsAndSearch();
+  }
+
+  // Função que busca ao pressionar Enter
+  const handlePressEnter = (key) => {
+    if(key === "Enter"){
+      updateComponentsAndSearch();
+    } 
+  }
+
+  function updateComponentsAndSearch() {
     if(inputValue !== "") {
       getGithubData(inputValue);
 
@@ -25,9 +37,9 @@ const Card = () => {
       setIsLoading(true);
       
       // Tirando perfil ao clicar para buscar
-      setGithubResponse({status: ""});
+      setGithubResponse({status: "", message: ""});
     } else {
-      alert("Evita mano");
+      setGithubResponse({message: "Digite algo antes de realizar a busca!"});
     }
 
     setInputValue("");
@@ -38,9 +50,12 @@ const Card = () => {
     try {
       const conection = await fetch(`https://api.github.com/users/${user}`);
       const response = await conection.json();
-  
+
       if(response.status === "404") {
-        setGithubResponse({status: 404})
+        setGithubResponse({
+          status: 404,
+          message: ""
+        })
       } else {
         setGithubResponse({
           image: response.avatar_url,
@@ -62,6 +77,7 @@ const Card = () => {
       value={inputValue}
       setValue={setInputValue}
       handleClick={() => handleClick()}
+      handlePressEnter={(e) => handlePressEnter(e)}
     />
     {githubResponse.status != "" 
     ?
@@ -70,6 +86,7 @@ const Card = () => {
         name={githubResponse.name}
         description={githubResponse.description}
         status={githubResponse.status}
+        message={githubResponse.message}
       />
     : 
       null
