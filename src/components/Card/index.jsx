@@ -2,17 +2,25 @@ import { useState } from "react";
 import Input from "../Input";
 import Logo from "../Logo";
 import Perfil from "../Perfil";
+import Loading from "../Loading";
 import "./style.css"
 
 const Card = () => {
   // Variáveis para manipução dos dados
   const [inputValue, setInputValue] = useState("");
   const [githubResponse, setGithubResponse] = useState({name: "", image: "", description: "", status: ""});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Função para capturar o click do usuário
   const handleClick = () => {
     if(inputValue !== "") {
       getGithubData(inputValue);
+
+      // Adicionando carregamento
+      setIsLoading(true);
+      
+      // Tirando perfil ao clicar para buscar
+      setGithubResponse({status: ""});
     } else {
       alert("Evita mano");
     }
@@ -34,10 +42,12 @@ const Card = () => {
           name: response.name,
           description: response.bio,
           status: 100
-        })
+        });
       }
     } catch {
-      alert("Houve um erro durante a consulta, tente novamente.")
+      alert("Houve um erro durante a consulta, tente novamente.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -59,6 +69,7 @@ const Card = () => {
     : 
       null
     }
+    {isLoading ? <Loading /> : null}
   </div>
 }
 

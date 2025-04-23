@@ -5,10 +5,10 @@ const Perfil = ({image, name, description, status}) => {
     {status === 100 
     ? 
       <>
-        <img src={image} alt={`Foto de perfil do usuário ${name}`} />
+        <img className="img" src={image} alt={`Foto de perfil do usuário ${name}`} />
         <div>
-          <h2>{name === null ? "Usuário sem nome" : name}</h2>
-          <p>{description === null ? "Usuário sem descrição" : description}</p>
+          <h2 className="name">{name === null ? "Usuário sem nome" : name}</h2>
+          <p className="desc">{description === null ? "Usuário sem descrição" : description}</p>
         </div>
       </>
     :
