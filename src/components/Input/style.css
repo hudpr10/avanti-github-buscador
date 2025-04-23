@@ -38,3 +38,21 @@
 
   cursor: pointer;
 }
+
+@media screen and (max-width: 760px) {
+  .input-container input {
+    width: 250px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .input-container img,
+  .input-container input {
+    padding: 8px;
+  }
+
+  .input-container input {
+    width: min-content;
+  }
+}

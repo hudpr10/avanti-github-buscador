@@ -8,7 +8,12 @@ import "./style.css"
 const Card = () => {
   // Variáveis para manipução dos dados
   const [inputValue, setInputValue] = useState("");
-  const [githubResponse, setGithubResponse] = useState({name: "", image: "", description: "", status: ""});
+  const [githubResponse, setGithubResponse] = useState({
+    name: "Lucas Mendes",
+    image: "/src/assets/imgs/example.png", 
+    description: "Desenvolvedor front-end apaixonado por criar interfaces intuitivas e acessíveis. Especialista em UX/UI e e-commerces, transformando design em código eficiente. Sempre explorando novas tecnologias para melhorar a experiência do usuário. 🚀", 
+    status: 100
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   // Função para capturar o click do usuário
