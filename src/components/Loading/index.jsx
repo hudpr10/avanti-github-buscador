@@ -1,8 +1,9 @@
 import "./style.css";
+import loadingGif from "../../assets/imgs/loading.gif"
 
 const Loading = () => {
   return <>
-    <img className="loading" src="/src/assets/imgs/loading.gif" alt="carregando..."/>
+    <img className="loading" src={loadingGif} alt="carregando..."/>
   </>
 }
 

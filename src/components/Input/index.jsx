@@ -1,4 +1,5 @@
 import "./style.css";
+import searchIcon from "../../assets/icons/search-icon.svg"
 
 const Input = ({value, setValue, handleClick, handlePressEnter}) => {
   return <div className="input-container">
@@ -10,7 +11,7 @@ const Input = ({value, setValue, handleClick, handlePressEnter}) => {
       onKeyDown={(e) => handlePressEnter(e.key)}
     />
     <img 
-      src="/src/assets/icons/search-icon.svg"
+      src={searchIcon}
       onClick={() => handleClick()}
     />
   </div>

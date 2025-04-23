@@ -1,10 +1,12 @@
 import "./style.css"
+import logoGithub from "../../assets/icons/github-icon.svg";
+import textGithub from "../../assets/icons/github-text.svg";
 
 const Logo = () => {
   return <div className="logo-container">
-    <img src="/src/assets/icons/github-icon.svg" alt="Logo Github" />
+    <img src={logoGithub} alt="Logo Github" />
     <h1>Pefil</h1>
-    <img src="/src/assets/icons/github-text.svg" alt="Github" />
+    <img src={textGithub} alt="Github" />
   </div>
 }
 
